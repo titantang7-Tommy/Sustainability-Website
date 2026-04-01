@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate | SP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">SP</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="mission.html">Mission</a>
+            <a href="calculator.html" class="active">Calculate</a>
+            <a href="log.html">Analytics</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Resources</a>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="benchmark-header">
+            <h2>Household Energy Audit</h2>
+            <p>Input daily usage across all appliances to generate a cumulative 7-day trend against regional sustainability targets.</p>
+        </div>
+
+        <div class="input-node">
+            <label>1. Select Day for Audit</label>
+            <select id="log-day">
+                <option value="0">Day 1 (Monday)</option><option value="1">Day 2 (Tuesday)</option>
+                <option value="2">Day 3 (Wednesday)</option><option value="3">Day 4 (Thursday)</option>
+                <option value="4">Day 5 (Friday)</option><option value="5">Day 6 (Saturday)</option>
+                <option value="6">Day 7 (Sunday)</option>
+            </select>
+        </div>
+
+        <div class="input-node">
+            <label>2. Benchmark Context</label>
+            <select id="region">
+                <option value="35">PNG Context (35 kWh/day Limit)</option>
+                <option value="50">Global Standard (50 kWh/day Limit)</option>
+            </select>
+        </div>
+
+        <div class="input-node">
+            <label>3. Appliance Active Hours</label>
+            <div class="appliance-list">
+                <div class="input-row">
+                    <span class="appliance-label">Air Conditioner (1.5 kW)</span>
+                    <input type="number" id="hrs-ac" placeholder="Hrs" class="hours-input">
+                </div>
+                <div class="input-row">
+                    <span class="appliance-label">Refrigerator (0.15 kW)</span>
+                    <input type="number" id="hrs-fridge" placeholder="Hrs" class="hours-input">
+                </div>
+                <div class="input-row">
+                    <span class="appliance-label">Television (0.10 kW)</span>
+                    <input type="number" id="hrs-tv" placeholder="Hrs" class="hours-input">
+                </div>
+                <div class="input-row">
+                    <span class="appliance-label">LED Lighting (0.05 kW)</span>
+                    <input type="number" id="hrs-light" placeholder="Hrs" class="hours-input">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-main" onclick="addToLog()">COMPUTE DAILY LOAD</button>
+
+        <div id="result-popup" style="display:none;">
+            <div class="stat-grid">
+                <div class="stat-box"><span>Total Load</span><h3 id="daily-kwh">0.00</h3><span>kWh</span></div>
+                <div class="stat-box"><span>Est. Cost</span><h3 id="daily-cost">K0.00</h3><span>PGK</span></div>
+                <div class="stat-box"><span>30-Day Proj.</span><h3 id="month-proj">0.0</h3><span>kWh</span></div>
+            </div>
+            <div class="benchmark-card">
+                <p id="status-text"></p>
+                <h2 id="savings-val" style="color:white; margin-top:5px;"></h2>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sustainability Project. Aligning with SDG 12: Responsible Consumption and Production.</p>
+    </footer>
+</body>
+</html>

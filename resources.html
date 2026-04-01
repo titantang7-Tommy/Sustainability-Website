@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | SP</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        /* Make the first item larger like a featured news article */
+        .featured-article {
+            grid-column: 1 / -1; 
+        }
+
+        .resource-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 250px; /* Standard height for the smaller cards */
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-decoration: none;
+            display: block;
+        }
+
+        .featured-article.resource-card {
+            height: 350px; /* Taller for the featured article */
+        }
+
+        /* The background image of the card */
+        .resource-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* The permanent gradient overlay so text is always somewhat readable */
+        .resource-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0) 100%);
+            z-index: 1;
+        }
+
+        /* The sliding pop-up text container */
+        .resource-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 2;
+            transform: translateY(35%); /* Pushes the description down initially */
+            transition: transform 0.4s ease;
+        }
+
+        .resource-tag {
+            background: var(--primary);
+            color: #022c22;
+            padding: 4px 8px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .resource-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            text-shadow: none; /* Removed heavy shadow for clean look */
+        }
+
+        .featured-article .resource-content h3 {
+            font-size: 1.8rem;
+        }
+
+        .resource-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            opacity: 0; /* Hidden initially */
+            transition: opacity 0.4s ease;
+            line-height: 1.5;
+        }
+
+        /* THE HOVER EFFECTS (Sliding and Zooming) */
+        .resource-card:hover .resource-bg {
+            transform: scale(1.1); /* Zooms the image */
+        }
+
+        .resource-card:hover .resource-content {
+            transform: translateY(0); /* Slides the text box up */
+        }
+
+        .resource-card:hover .resource-desc {
+            opacity: 1; /* Fades in the description */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">SP</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="mission.html">Mission</a>
+            <a href="calculator.html">Calculate</a>
+            <a href="log.html">Analytics</a>
+            <a href="about.html">About</a>
+            <a href="resources.html" class="active">Resources</a>
+        </div>
+    </nav>
+
+    <div class="card" style="max-width: 900px;">
+        <div class="benchmark-header">
+            <h2>References & Literature</h2>
+            <p>External sources, tariff data, and global standards used to benchmark the 35 kWh/day and 50 kWh/day targets.</p>
+        </div>
+
+        <div class="news-grid">
+            
+            <a href="https://sdgs.un.org/goals/goal12" target="_blank" class="resource-card featured-article">
+                <img src="background.jpg" alt="SDG 12" class="resource-bg">
+                <div class="resource-gradient"></div>
+                <div class="resource-content">
+                    <span class="resource-tag">United Nations</span>
+                    <h3>Goal 12: Ensure sustainable consumption and production patterns</h3>
+                    <p class="resource-desc">The foundational global framework driving our objective to optimize household energy footprints and reduce electrical waste.</p>
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="resource-card">
+                <img src="background.jpg" alt="PNG Power" class="resource-bg">
+                <div class="resource-gradient"></div>
+                <div class="resource-content">
+                    <span class="resource-tag">Tariff Data</span>
+                    <h3>PNG Power Ltd Pricing</h3>
+                    <p class="resource-desc">Official reference for the 0.95 PGK/kWh rate utilized in our financial projection algorithms.</p>
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="resource-card">
+                <img src="background.jpg" alt="Energy Research" class="resource-bg">
+                <div class="resource-gradient"></div>
+                <div class="resource-content">
+                    <span class="resource-tag">Academic Paper</span>
+                    <h3>Urban Electrification in the Pacific</h3>
+                    <p class="resource-desc">Peer-reviewed literature establishing the 35 kWh/day baseline for sustainable grid load.</p>
+                </div>
+            </a>
+
+            <a href="#" target="_blank" class="resource-card">
+                <img src="background.jpg" alt="Appliance Data" class="resource-bg">
+                <div class="resource-gradient"></div>
+                <div class="resource-content">
+                    <span class="resource-tag">Engineering Specs</span>
+                    <h3>Standard Appliance kW Ratings</h3>
+                    <p class="resource-desc">Data sheets used to determine the default power draw for air conditioners, refrigeration, and LED lighting.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sustainability Project. Aligning with SDG 12: Responsible Consumption and Production.</p>
+    </footer>
+</body>
+</html>
